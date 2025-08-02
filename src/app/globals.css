@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #242A34;
     --foreground: #ededed;
   }
 }
@@ -22,5 +22,60 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:  Lato, sans-serif;
 }
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 300;
+}
+
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Ajusta este valor si es necesario */
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite; /* Ajusta la duración si es necesario */
+  white-space: nowrap; /* Mantiene los logos en una línea */
+}
+
+/* Ocultar scrollbar horizontal en el navegador */
+.cardsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+/* Para navegadores Webkit */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #242A34;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #242A34;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #242A34;
+}
+
+/* Para Firefox */
+html {
+  scrollbar-width: thin; /* Cambia a "auto" o "none" según tus preferencias */
+  scrollbar-color: #A58A35 #242A34; /* Color del thumb y del track */
+}
+
