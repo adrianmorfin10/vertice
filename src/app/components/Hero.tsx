@@ -10,21 +10,22 @@ export default function Hero() {
       title: 'Minería con futuro',
       subtitle: 'Somos un grupo dedicado al desarrollo de proyectos mineros, extraemos y procesamos minerales de una manera eficiente y sostenible',
       cta: 'Ver esquemas de inversión',
-      background: '/variant4.png'
+      background: '/Variant4.png'
     },
     {
       title: 'Desarrollo Responsable',
       subtitle: 'Estamos comprometidos con extraer recursos de manera eficiente y segura, minimizando el impacto ambiental y promoviendo el bienestar de las comunidades donde operamos',
       cta: 'Ver nuestros principios',
-      background: '/variant4.png'
+      background: '/Variant4.png'
     },
     {
       title: 'Crecimiento Sostenible',
       subtitle: 'Garantizamos un equilibrio entre economía, medio ambiente y desarrollo social. La minería responsable asegura un futuro sostenible para las próximas generaciones',
       cta: 'Ver esquemas de inversión',
-      background: '/variant4.png'
+      background: '/Variant4.png'
     }
   ]
+
 
   // Auto-avance cada 20 segundos
   useEffect(() => {
@@ -42,7 +43,7 @@ export default function Hero() {
           className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
         >
           {/* Fondo con overlay oscuro */}
-          <div className="absolute inset-0 bg-black/40 z-0">
+          <div className="absolute inset-0 bg-black/45 z-0">
             <Image
               src={slide.background}
               alt=""
