@@ -43,7 +43,7 @@ export const Footer = () => {
           <h3 className="text-xl font-space-grotesk font-light mb-4">Ubicación</h3>
           <p className="font-lato mb-2">Zona Plateada, Pachuca, Hidalgo.</p>
           <p className="font-lato mb-4">CP 42084</p>
-          <a href="#" className="flex items-center font-lato hover:text-blue-400 transition-colors">
+          <a href="ubicaciones" className="flex items-center font-lato hover:text-blue-400 transition-colors">
             <FaMapMarkerAlt className="mr-2" /> Ver en mapa
           </a>
         </div>

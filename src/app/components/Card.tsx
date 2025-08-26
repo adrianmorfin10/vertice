@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link' // Importar Link de Next.js
 
 type CardProps = {
   title: string
@@ -11,6 +12,7 @@ type CardProps = {
   bgColor?: string
   bgImage?: string
   contentText?: string
+  link: string // Prop para el enlace
 }
 
 export default function Card({
@@ -22,8 +24,14 @@ export default function Card({
   bgType,
   bgColor = 'bg-gray-800',
   bgImage = '/default-bg.jpg',
-  contentText = ''
+  contentText = '',
+  link // Recibir la prop link
 }: CardProps) {
+  // Determinar los estilos del botón según la variante
+  const buttonStyles = variant === 'both' 
+    ? 'px-6 py-2 border rounded-full hover:bg-white/10 transition-colors inline-block' 
+    : 'underline hover:opacity-80'
+
   return (
     <div className={`min-h-[600px] flex flex-col justify-between overflow-hidden relative border-r border-[#3A404A] ${bgType === 'image' ? 'text-white' : ''}`}>
       
@@ -64,9 +72,9 @@ export default function Card({
         )}
 
         {(variant === 'cta' || variant === 'both') && (
-          <button className={`mt-4 ${variant === 'both' ? 'px-6 py-2 border rounded-full hover:bg-white/10 transition-colors' : 'underline hover:opacity-80'}`}>
+          <Link href={link} className={buttonStyles}>
             {ctaText}
-          </button>
+          </Link>
         )}
       </div>
     </div>

@@ -18,6 +18,7 @@ export const AgregadosPetreos = () => {
           ctaText="Ver más productos y servicios"
           bgType="image"
           bgImage="/truck.png"
+          link="/productos" // Agregado
         />
       </div>
     </section>

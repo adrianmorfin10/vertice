@@ -15,6 +15,7 @@ export const Serviciostres = () => {
           '
           bgType="color"
           bgColor="bg-[#03A404A]"
+          link="/productos" // Agregado
         />
         
         {/* Card 2 - Barrenación */}
@@ -28,6 +29,7 @@ export const Serviciostres = () => {
           '
           bgType="image"
           bgImage="/bom.png"
+          link="/productos" // Agregado
         />
         
         {/* Card 3 - Estudios */}
@@ -41,6 +43,7 @@ export const Serviciostres = () => {
           '
           bgType="color"
           bgColor="bg-[#03A404A]"
+          link="/productos" // Agregado
         />
         
         {/* Card 4 - Gestión */}
@@ -54,6 +57,7 @@ export const Serviciostres = () => {
           '
           bgType="color"
           bgColor="bg-[#03A404A]"
+          link="/productos" // Agregado
         />
       </div>
     </section>

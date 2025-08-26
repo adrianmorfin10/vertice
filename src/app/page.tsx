@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Navbar from "./components/NavBar";
 import Hero from "./components/Hero";
-import Logos from "./components/Logos";
-import { AgregadosPetreos } from "./components/AgregadosPetreos";
+import UbicacionesHome from "./components/UbicacionesHome";
 import { Servicios } from "./components/Servicios";
 import { Principios } from './components/Principios';
 import ContactForm from './components/ContactForm'
@@ -15,10 +14,11 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <AgregadosPetreos />
       <Servicios />
       <Principios />
+      <UbicacionesHome />
       <ContactForm />
+      
       <Footer />
     
       {/* Rest of your content */}

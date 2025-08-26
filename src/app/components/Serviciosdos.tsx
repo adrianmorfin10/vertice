@@ -15,6 +15,7 @@ export const Serviciosdos = () => {
           '
           bgType="color"
           bgColor="bg-[#A58A35]"
+          link="/productos" // Agregado
         />
         
         {/* Card 2 */}
@@ -28,6 +29,7 @@ export const Serviciosdos = () => {
           '
           bgType="color"
           bgColor="bg-[#03A404A]"
+          link="/productos" // Agregado
         />
         
         {/* Card 3 */}
@@ -41,6 +43,7 @@ export const Serviciosdos = () => {
           '
           bgType="color"
           bgColor="bg-[#03A404A]"
+          link="/productos" // Agregado
         />
         
         {/* Card 4 */}
@@ -54,6 +57,7 @@ export const Serviciosdos = () => {
           '
           bgType="color"
           bgColor="bg-[#03A404A]"
+          link="/productos" // Agregado
         />
       </div>
     </section>

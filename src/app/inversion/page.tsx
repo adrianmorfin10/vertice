@@ -2,7 +2,11 @@
 import dynamic from 'next/dynamic'
 import Navbar from "../components/NavBar"
 import { Footer } from '../components/Footer'
-import ContactHero from '../components/ContactHero' // Importar el nuevo componente
+import MineriaHero from '../components/MineriaHero' // Importar el nuevo componente
+import Mineria from '../components/Mineria'
+import NuestrosProyectos from '../components/Proyectos'
+import { Servicioscuatro } from '../components/Servicioscuatro'
+import EsquemasInversion from '../components/EsquemasInversion'
 
 // Carga dinámica del formulario
 const ContactForm = dynamic(() => import('../components/ContactForm'), {
@@ -18,8 +22,21 @@ export default function ContactPage() {
       
       {/* Componente Hero de contacto */}
       <div className=" pt-18 w-full ">
-          <ContactHero />
+          <MineriaHero />
         </div>
+        <div className=" pt-18 w-full ">
+          <Mineria/>
+        </div>
+        <div className=" pt-18 w-full ">
+          <NuestrosProyectos/>
+        </div>
+        <div className="w-full ">
+          <Servicioscuatro/>
+        </div>
+        <div className="w-full ">
+          <EsquemasInversion/>
+        </div>
+
       
       {/* Sección principal con el formulario */}
       <section className="flex-grow bg-[#A58A35] py-16">
