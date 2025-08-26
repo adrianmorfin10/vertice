@@ -3,6 +3,9 @@
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
 
+// Importar el tipo de Google Maps
+import { GoogleMap } from '@react-google-maps/api'
+
 const UbicacionesMapa = dynamic(() => import('./Ubicaciones'), {
   ssr: false,
   loading: () => <div className="h-[500px] bg-white animate-pulse rounded-lg" />
@@ -33,15 +36,20 @@ const minasHidalgo = [
   }
 ]
 
-export default function UbicacionesHome() {
-  const [mapa, setMapa] = useState<any>(null)
-  const [ubicacionSeleccionada, setUbicacionSeleccionada] = useState(minasHidalgo[0])
+// Tipo para las minas
+type Mina = typeof minasHidalgo[0]
 
-  const centrarMapa = (ubicacion: typeof minasHidalgo[0]) => {
+export default function UbicacionesHome() {
+  const [mapa, setMapa] = useState<GoogleMap | null>(null)
+  const [ubicacionSeleccionada, setUbicacionSeleccionada] = useState<Mina>(minasHidalgo[0])
+
+  const centrarMapa = (ubicacion: Mina) => {
     setUbicacionSeleccionada(ubicacion)
     if (mapa && ubicacion.ubicacion) {
-      mapa.panTo(ubicacion.ubicacion)
-      mapa.setZoom(15)
+      // Usar los métodos del mapa de forma segura
+      const mapInstance = mapa as unknown as google.maps.Map
+      mapInstance.panTo(ubicacion.ubicacion)
+      mapInstance.setZoom(15)
     }
   }
 
@@ -60,7 +68,7 @@ export default function UbicacionesHome() {
           <div className="lg:w-3/4 h-[400px] rounded-lg overflow-hidden shadow-xl">
             <UbicacionesMapa 
               ubicaciones={minasHidalgo}
-              onMapLoad={(map) => setMapa(map)}
+              onMapLoad={(map) => setMapa(map as unknown as GoogleMap)}
               ubicacionSeleccionada={ubicacionSeleccionada}
             />
           </div>
