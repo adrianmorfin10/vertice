@@ -2,15 +2,33 @@
 import { useState } from 'react'
 
 export default function ContactForm() {
-    const [formData, setFormData] = useState({
-      name: '',
-      email: '',
-      message: ''
-    })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    
+    const formData = new FormData(e.currentTarget as HTMLFormElement)
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/tu-email@gmail.com', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+
+      if (!response.ok) throw new Error('Error en el envío')
+      
+      setSubmitStatus('success')
+      ;(e.currentTarget as HTMLFormElement).reset()
+    } catch (error) {
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -19,15 +37,29 @@ export default function ContactForm() {
         <h2 className="text-4xl font-space-grotesk font-light mb-4 text-center text-white">Contáctanos</h2>
         <p className="text-xl font-lato text-center mb-12 text-white">Comienza a invertir en un futuro sostenible y seguro.</p>
         
-        <form className="space-y-8">
+        {submitStatus === 'success' && (
+          <div className="mb-8 p-4 bg-green-100 text-green-800 rounded-lg">
+            ¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.
+          </div>
+        )}
+        
+        {submitStatus === 'error' && (
+          <div className="mb-8 p-4 bg-red-100 text-red-800 rounded-lg">
+            Error al enviar. Por favor intenta nuevamente.
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-8">
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="box" />
+          
           <div className="flex flex-col space-y-2">
             <label htmlFor="name" className="text-2xl font-space-grotesk text-white">Nombre</label>
             <input
               type="text"
               id="name"
               name="name"
-              value={formData.name}
-              onChange={handleChange}
+              required
               className="w-full px-4 py-3 bg-transparent text-white font-lato border-b-2 border-white focus:outline-none focus:border-white/80 placeholder-white/60"
               placeholder="Escribe tu nombre"
             />
@@ -39,8 +71,7 @@ export default function ContactForm() {
               type="email"
               id="email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
+              required
               className="w-full px-4 py-3 bg-transparent text-white font-lato border-b-2 border-white focus:outline-none focus:border-white/80 placeholder-white/60"
               placeholder="Escribe tu email"
             />
@@ -51,8 +82,7 @@ export default function ContactForm() {
             <textarea
               id="message"
               name="message"
-              value={formData.message}
-              onChange={handleChange}
+              required
               rows={4}
               className="w-full px-4 py-3 bg-transparent text-white font-lato border-b-2 border-white focus:outline-none focus:border-white/80 placeholder-white/60"
               placeholder="Escribe tu mensaje"
@@ -62,9 +92,10 @@ export default function ContactForm() {
           <div className="pt-6">
             <button 
               type="submit"
-              className="w-full px-6 py-4 bg-white text-[#A58A35] text-xl font-space-grotesk rounded-lg hover:bg-white/90 transition-colors"
+              disabled={isSubmitting}
+              className="w-full px-6 py-4 bg-white text-[#A58A35] text-xl font-space-grotesk rounded-lg hover:bg-white/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              Enviar mensaje
+              {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
             </button>
           </div>
         </form>

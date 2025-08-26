@@ -1,19 +1,18 @@
 'use client'
 import Image from 'next/image'
 
-// Definimos las props primero
 type CardProps = {
   title: string
   subtitle: string
-  variant: 'cta' | 'bullets' | 'both'
+  variant: 'cta' | 'bullets' | 'both' | 'text-only'
   bullets?: string[]
   ctaText?: string
   bgType: 'color' | 'image'
   bgColor?: string
   bgImage?: string
+  contentText?: string
 }
 
-// Exportamos como default
 export default function Card({
   title,
   subtitle,
@@ -22,10 +21,11 @@ export default function Card({
   ctaText = 'Ver más',
   bgType,
   bgColor = 'bg-gray-800',
-  bgImage = '/default-bg.jpg'
+  bgImage = '/default-bg.jpg',
+  contentText = ''
 }: CardProps) {
   return (
-    <div className={`min-h-[600px] flex flex-col justify-between  overflow-hidden relative border-r border-[#3A404A] ${bgType === 'image' ? 'text-white' : ''}`}>
+    <div className={`min-h-[600px] flex flex-col justify-between overflow-hidden relative border-r border-[#3A404A] ${bgType === 'image' ? 'text-white' : ''}`}>
       
       {/* Fondo */}
       {bgType === 'image' ? (
@@ -37,15 +37,22 @@ export default function Card({
         <div className={`absolute inset-0 ${bgColor} z-0`}></div>
       )}
 
-      {/* Contenido */}
-      <div className="relative z-20 p-8">
-        <h3 className="text-3xl font-space-grotesk font-light mb-4">{title}</h3>
-        <p className="text-lg font-lato font-light">{subtitle}</p>
-      </div>
+      {/* Contenido superior */}
+      {(title || subtitle) && (
+        <div className="relative z-20 p-8">
+          {title && <h3 className="text-3xl font-space-grotesk font-light mb-4">{title}</h3>}
+          {subtitle && <p className="text-lg font-lato font-light">{subtitle}</p>}
+        </div>
+      )}
 
-      {/* Parte inferior */}
+      {/* Contenido inferior */}
       <div className="relative z-20 p-8 mt-auto">
-        {variant === 'bullets' || variant === 'both' ? (
+        {variant === 'text-only' && contentText && (
+          <div className="[&>h4]:text-3xl [&>h4]:font-space-grotesk [&>h4]:font-light [&>h4]:mb-4 [&>p]:text-lg [&>p]:font-lato [&>p]:font-light" 
+               dangerouslySetInnerHTML={{ __html: contentText }} />
+        )}
+
+        {(variant === 'bullets' || variant === 'both') && (
           <ul className="mb-6 space-y-2">
             {bullets.map((bullet, index) => (
               <li key={index} className="flex items-start">
@@ -54,13 +61,13 @@ export default function Card({
               </li>
             ))}
           </ul>
-        ) : null}
+        )}
 
-        {variant === 'cta' || variant === 'both' ? (
+        {(variant === 'cta' || variant === 'both') && (
           <button className={`mt-4 ${variant === 'both' ? 'px-6 py-2 border rounded-full hover:bg-white/10 transition-colors' : 'underline hover:opacity-80'}`}>
             {ctaText}
           </button>
-        ) : null}
+        )}
       </div>
     </div>
   )
