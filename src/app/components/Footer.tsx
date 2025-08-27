@@ -16,16 +16,16 @@ export const Footer = () => {
             className="mb-4"
           />
           <div className="flex space-x-4">
-            <a href="#" className="text-2xl hover:text-blue-400 transition-colors">
+            <a href="https://www.facebook.com/mineriavertice" className="text-2xl hover:text-blue-400 transition-colors">
               <FaFacebook />
             </a>
-            <a href="#" className="text-2xl hover:text-blue-400 transition-colors">
+            <a href="https://x.com/mineriavertice" className="text-2xl hover:text-blue-400 transition-colors">
               <FaTwitter />
             </a>
-            <a href="#" className="text-2xl hover:text-blue-400 transition-colors">
+            <a href="https://www.linkedin.com/company/mineriavertice/" className="text-2xl hover:text-blue-400 transition-colors">
               <FaLinkedin />
             </a>
-            <a href="#" className="text-2xl hover:text-blue-400 transition-colors">
+            <a href="https://www.instagram.com/mineriavertice" className="text-2xl hover:text-blue-400 transition-colors">
               <FaInstagram />
             </a>
           </div>
@@ -52,10 +52,10 @@ export const Footer = () => {
         <div>
           <h3 className="text-xl font-space-grotesk font-light mb-4">Enlaces</h3>
           <ul className="space-y-2 font-lato">
-            <li><a href="#" className="hover:text-blue-400 transition-colors">Inicio</a></li>
-            <li><a href="#" className="hover:text-blue-400 transition-colors">Servicios</a></li>
-            <li><a href="#" className="hover:text-blue-400 transition-colors">Inversiones</a></li>
-            <li><a href="#" className="hover:text-blue-400 transition-colors">Contacto</a></li>
+            <li><a href="" className="hover:text-blue-400 transition-colors">Inicio</a></li>
+            <li><a href="servicios" className="hover:text-blue-400 transition-colors">Servicios</a></li>
+            <li><a href="inversion" className="hover:text-blue-400 transition-colors">Inversiones</a></li>
+            <li><a href="contacto" className="hover:text-blue-400 transition-colors">Contacto</a></li>
           </ul>
         </div>
       </div>
