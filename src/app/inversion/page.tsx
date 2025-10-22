@@ -20,7 +20,7 @@ export default function ContactPage() {
       {/* Barra de navegación */}
       <Navbar />
       
-      {/* Componente Hero de contacto */}
+      {/* Componente Hero de contacto 
       <div className=" pt-18 w-full ">
           <MineriaHero />
         </div>
@@ -35,16 +35,16 @@ export default function ContactPage() {
         </div>
         <div className="w-full ">
           <EsquemasInversion/>
-        </div>
+        </div>*/}
 
       
-      {/* Sección principal con el formulario */}
+      {/* Sección principal con el formulario 
       <section className="flex-grow bg-[#A58A35] py-16">
         <div className="container  mx-auto px-4">
           <ContactForm />
         </div>
       </section>
-      
+      */}
       {/* Pie de página */}
       <Footer />
     </main>
