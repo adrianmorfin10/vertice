@@ -4,7 +4,9 @@ import dynamic from 'next/dynamic'
 import Navbar from "../components/NavBar"
 import { Footer } from '../components/Footer'
 
-
+// 👇 IMPORTACIONES FALTANTES AGREGADAS
+import UbicacionesMapa from '../components/UbicacionesMapa' // Ajusta la ruta si es necesario
+import ContactForm from '../components/ContactForm'
 
 // Datos completos de las 3 minas en Hidalgo
 const minasHidalgo = [
@@ -55,6 +57,30 @@ export default function UbicacionesPage() {
 
   return (
     <main className="min-h-screen flex flex-col">
+      {/* =====================================================
+          SITIO FUERA DE SERVICIO HASTA RECIBIR PAGO
+          Cuando se confirme el pago, eliminar este bloque y
+          descomentar el contenido original.
+          ===================================================== */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        fontSize: '2rem',
+        textAlign: 'center',
+        padding: '20px',
+        flexDirection: 'column'
+      }}>
+        <div>
+          <h1>🚧 Sitio en mantenimiento / Fuera de servicio 🚧</h1>
+          <p>El sitio estará disponible nuevamente una vez que se haya procesado el pago.</p>
+          <p style={{ fontSize: '1rem', marginTop: '2rem' }}>Gracias por su paciencia.</p>
+        </div>
+      </div>
+
+      {/* CONTENIDO ORIGINAL COMENTADO (para habilitar cuando se reciba el pago) */}
+      {/*
       <Navbar />
       
       <section className="mt-[80px] bg-gray-50 py-12">
@@ -64,7 +90,6 @@ export default function UbicacionesPage() {
           </h1>
           
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Mapa (70% ancho) */}
             <div className="lg:w-3/4 h-[600px] rounded-lg overflow-hidden shadow-xl">
               <UbicacionesMapa 
                 ubicaciones={minasHidalgo}
@@ -76,7 +101,6 @@ export default function UbicacionesPage() {
               />
             </div>
             
-            {/* Lista de ubicaciones (30% ancho) */}
             <div className="lg:w-1/4 space-y-6">
               <h2 className="text-2xl font-bold text-[#A58A35]">
                 Nuestras Minas
@@ -122,6 +146,7 @@ export default function UbicacionesPage() {
       </section>
 
       <Footer />
+      */}
     </main>
   )
 }
