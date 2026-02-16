@@ -25,16 +25,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* CONTENIDO ORIGINAL COMENTADO (para habilitar cuando se reciba el pago) */}
-      {/*
-      <Navbar />
-      <Hero />
-      <Servicios />
-      <Principios />
-      <UbicacionesHome />
-      <ContactForm />
-      <Footer />
-      */}
     </main>
   )
 }
